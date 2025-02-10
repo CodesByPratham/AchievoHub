@@ -166,12 +166,12 @@ public class DatabaseSetupServlet extends HttpServlet {
             if (isTableEmpty(conn, "USERS")) {
                 stmt.executeUpdate("""
                     INSERT INTO USERS (ID, USERNAME, FNAME, LNAME, CONTACT, EMAIL, DOB, GENDER, ADDRESS, CITY, STATE, PINCODE, PASSWORD, PICTURE)
-                    VALUES (USERS_SEQ.NEXTVAL, 'prathamr', 'Pratham', 'Rathod', '9876543210', 'pratham@example.com', TO_DATE('2000-05-12', 'YYYY-MM-DD'), 'male', '101 Residency, Ahmedabad', 2, 2, '380001', 'securepass1', 'resources/uploads/profiles/pratham.jpg')
+                    VALUES (USERS_SEQ.NEXTVAL, 'kritikal', 'Kritika', 'Lohani', '9876543211', 'kritika@example.com', TO_DATE('1998-07-22', 'YYYY-MM-DD'), 'female', 'Sunshine Tower, Mumbai', 6, 3, '400001', 'securepass2', 'resources/uploads/profiles/kritika.jpg')
                 """);
-
+                
                 stmt.executeUpdate("""
                     INSERT INTO USERS (ID, USERNAME, FNAME, LNAME, CONTACT, EMAIL, DOB, GENDER, ADDRESS, CITY, STATE, PINCODE, PASSWORD, PICTURE)
-                    VALUES (USERS_SEQ.NEXTVAL, 'kritikal', 'Kritika', 'Lohani', '9876543211', 'kritika@example.com', TO_DATE('1998-07-22', 'YYYY-MM-DD'), 'female', 'Sunshine Tower, Mumbai', 6, 3, '400001', 'securepass2', 'resources/uploads/profiles/kritika.jpg')
+                    VALUES (USERS_SEQ.NEXTVAL, 'prathamr', 'Pratham', 'Rathod', '9876543210', 'pratham@example.com', TO_DATE('2000-05-12', 'YYYY-MM-DD'), 'male', '101 Residency, Ahmedabad', 2, 2, '380001', 'securepass1', 'resources/uploads/profiles/pratham.jpg')
                 """);
 
                 stmt.executeUpdate("""
@@ -185,17 +185,17 @@ public class DatabaseSetupServlet extends HttpServlet {
                 int prathamId = getUserId(conn, "prathamr");
                 int kritikaId = getUserId(conn, "kritikal");
                 int devId = getUserId(conn, "devpatel");
+                
+                if (kritikaId != -1) {
+                    insertAchievement(stmt, kritikaId, "SQL", "HackerRank", "https://www.hackerrank.com/", "Academic", "Certificate", "Online Course", "Jun-2023 – Aug-2023", "The HackerRank SQL Basic Certification is designed to test fundamental SQL concepts, such as querying databases, filtering data, and performing basic joins. The questions typically involve retrieving data from multiple tables, using conditions to filter results, and employing functions like GROUP BY and ORDER BY.", "2023-06-25", "resources/uploads/achievements/sql.jpg");
+                    insertAchievement(stmt, kritikaId, "Generative Al", "GUVI", "https://www.guvi.in/", "Personal Development", "Participation", "Workshop", "Sep-2022 – Dec-2022", "Kritika from Baou is hereby awarded the certificate of achievement for the successful completion of SAWIT.AI Learnathon Program held on 21st September, where they completed the fundamentals of Generative Al", "2022-09-20", "resources/uploads/achievements/genai.jpg");
+                    insertAchievement(stmt, kritikaId, "Python", "HackerRank", "https://www.hackerrank.com/", "Professional", "Certificate", "Online Course", "Feb-2024 – May-2024", "The HackerRank Python Certification validates your proficiency in the Python programming language. The certification assesses your problem-solving skills, algorithmic thinking, and ability to write efficient code. Earning this certification can enhance your career prospects and demonstrate your dedication to continuous learning.", "2024-02-14", "resources/uploads/achievements/python.jpg");
+                }
 
                 if (prathamId != -1) {
                     insertAchievement(stmt, prathamId, "GitHub Foundations", "GitHub", "https://github.com/", "Technology & Innovation", "Badge", "Exam", "Nov-2023 – Jan-2024", "Passing the GitHub Foundations certification exam validates subject matter expertise by measuring entry-level skills with GitHub basics like repositories, commits, branching, markdowns, and project management.", "2023-11-15", "resources/uploads/achievements/github.jpg");
                     insertAchievement(stmt, prathamId, "Java", "HackerRank", "https://www.hackerrank.com/", "Academic", "Certificate", "Online Course", "Aug-2022 – Oct-2022", "It will cover basic topics in Java language such as classes, data structures, inheritance, exception handling, etc. You are expected to be proficient in either Java 7 or Java 8.", "2022-08-10", "resources/uploads/achievements/java.jpg");
                     insertAchievement(stmt, prathamId, "Agile Development and Scrum", "IBM", "https://www.coursera.org/", "Personal Development", "Badge", "Online Course", "Jan-2024 – Mar-2024", "This badge earner has demonstrated how to use Git and GitHub as code repositories for developing applications. They understand why version control is essential in creating open-source and commercial software. The badge earner can create repositories and branches, perform pull requests and merge operations, and use these repositories to collaborate with their teammates.", "2024-01-05", "resources/uploads/achievements/agile.jpg");
-                }
-
-                if (kritikaId != -1) {
-                    insertAchievement(stmt, kritikaId, "SQL", "HackerRank", "https://www.hackerrank.com/", "Academic", "Certificate", "Online Course", "Jun-2023 – Aug-2023", "The HackerRank SQL Basic Certification is designed to test fundamental SQL concepts, such as querying databases, filtering data, and performing basic joins. The questions typically involve retrieving data from multiple tables, using conditions to filter results, and employing functions like GROUP BY and ORDER BY.", "2023-06-25", "resources/uploads/achievements/sql.jpg");
-                    insertAchievement(stmt, kritikaId, "Generative Al", "GUVI", "https://www.guvi.in/", "Personal Development", "Participation", "Workshop", "Sep-2022 – Dec-2022", "Kritika from Baou is hereby awarded the certificate of achievement for the successful completion of SAWIT.AI Learnathon Program held on 21st September, where they completed the fundamentals of Generative Al", "2022-09-20", "resources/uploads/achievements/genai.jpg");
-                    insertAchievement(stmt, kritikaId, "Python", "HackerRank", "https://www.hackerrank.com/", "Professional", "Certificate", "Online Course", "Feb-2024 – May-2024", "The HackerRank Python Certification validates your proficiency in the Python programming language. The certification assesses your problem-solving skills, algorithmic thinking, and ability to write efficient code. Earning this certification can enhance your career prospects and demonstrate your dedication to continuous learning.", "2024-02-14", "resources/uploads/achievements/python.jpg");
                 }
 
                 if (devId != -1) {
