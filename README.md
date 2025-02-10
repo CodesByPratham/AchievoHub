@@ -73,7 +73,7 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 | **SQL Server (Various)** | 1.4 - 1.8 | `sqljdbc.jar` / `sqljdbc42.jar` |
 | **IBM DB2** | Various | `db2jcc.jar`, `jt400.jar` |
 
-🔗 Refer to official sources for JDBC downloads:
+🔗 Refer to official sources for JDBC driver downloads:
 - [Oracle JDBC Drivers](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)
 - [JDBC Driver Selection Guide](https://docs.oracle.com/en/applications/jd-edwards/cross-product/9.2/eoism/obtain-jdbc-drivers.html)
 
