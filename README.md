@@ -1,8 +1,9 @@
 # AchievoHub 🚀
 
 AchievoHub is a **Java-based web application** that enables users to manage their achievements, view other users' profiles, and keep track of their progress. This platform allows users to showcase their accomplishments in a structured manner, fostering a sense of motivation and growth. By providing an intuitive and interactive interface, AchievoHub ensures a seamless user experience for managing personal and professional achievements.
+<br/><br/>
 
-## 🛠️ Tools & Technologies Used
+# 🛠️ Tools & Technologies Used
 - **Programming Language:** Java (JDK 11 or higher)
 - **Web Technologies:** JSP, Servlets, AJAX, jQuery
 - **Database:** Oracle Database (JDBC for connectivity)
@@ -10,57 +11,59 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 - **Server:** Tomcat 10 or higher
 - **Security:** jBCrypt for password hashing
 - **Dependency Management:** Gson for JSON parsing
+<br/><br/>
 
-## 📽️ Page-wise Functionality (With GIFs)
-### **1️⃣ Login Page**
-- Allows users to enter credentials and log in securely.
-- Provides error messages for incorrect credentials.
-- [![Login Page](login.gif)](login.gif)
+# 📽️ Page-wise Functionality
 
-### **2️⃣ Registration Page**
+## **1️⃣ Registration Page**
 - New users can sign up by providing required details.
 - Real-time username & email availability check using AJAX.
-- [![Registration Page](register.gif)](register.gif)
+<img src="https://github.com/CodesByPratham/AchievoHub/blob/main/resources/register.gif" height=400 width=800 alt="register" />
+<br/>
 
-### **3️⃣ Profile Page**
+## **2️⃣ Login Page**
+- Allows users to enter credentials and log in securely.
+- Provides error messages for incorrect credentials.
+<img src="https://github.com/CodesByPratham/AchievoHub/blob/main/resources/login.gif" height=400 width=800 alt="login" />
+<br/>
+
+## **3️⃣ Profile Page**
 - Displays user's information.
 - Allows profile updates and picture uploads.
 - Option to **delete profile** if needed.
-- [![Profile Page](profile.gif)](profile.gif)
+<img src="https://github.com/CodesByPratham/AchievoHub/blob/main/resources/update%20profile.gif" height=400 width=800 alt="profile" />
+<br/>
 
-### **4️⃣ Add Achievements**
+## **4️⃣ Add Achievements**
 - Users can add new achievements with details.
 - Supports **image uploads** for achievements.
-- [![Add Achievements](add_achievements.gif)](add_achievements.gif)
+<img src="https://github.com/CodesByPratham/AchievoHub/blob/main/resources/add%20achievement.gif" height=400 width=800 alt="add achievements" />
+<br/>
 
-### **5️⃣ View Achievements**
+## **5️⃣ View Achievements**
 - Users can see all achievements added by them.
 - Can also **view other users' achievements and profiles**.
-- [![Achievements Page](achievements.gif)](achievements.gif)
+<img src="https://github.com/CodesByPratham/AchievoHub/blob/main/resources/achievements.gif" height=400 width=800 alt="achievements" />
+<br/>
 
-### **6️⃣ Update Achievements**
-- Modify existing achievements.
-- Upload a new image and delete the old one.
-- [![Update Achievement](update_achievement.gif)](update_achievement.gif)
-
-### **7️⃣ Logout**
+## **7️⃣ Logout**
 - Ends the user session and redirects to the login page.
+<br/>
 
----
-
-## 🛠️ Setup Instructions
-### **1️⃣ Install Required Software**
+# 🛠️ Setup Instructions
+## **1️⃣ Install Required Software**
 - **NetBeans IDE** (or any Java IDE)
 - **Tomcat 10 or higher**
 - **Oracle Database**
 - **JDK 11 or higher**
+<br/>
 
-### **2️⃣ Add Required JAR Files**
-#### 📥 **Download Dependencies:**
+## **2️⃣ Add Required JAR Files**
+### 📥 **Download Dependencies:**
 - **GSON**: [Download](https://repo1.maven.org/maven2/com/google/code/gson/gson/2.12.1/gson-2.12.1.jar)
 - **jBCrypt**: [Download](https://repo1.maven.org/maven2/org/mindrot/jbcrypt/0.4/jbcrypt-0.4.jar)
 
-#### 📌 **Choose the Correct JDBC Driver for Your Database:**
+### 📌 **Choose the Correct JDBC Driver for Your Database:**
 | Database | JDK Version | JDBC Driver |
 |----------|------------|-------------|
 | **Oracle 9i** | Any | `classes12.jar` |
@@ -74,14 +77,13 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 - [Oracle JDBC Drivers](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)
 - [JDBC Driver Selection Guide](https://docs.oracle.com/en/applications/jd-edwards/cross-product/9.2/eoism/obtain-jdbc-drivers.html)
 
-#### 📌 **Add JARs to NetBeans Project:**
+### 📌 **Add JARs to NetBeans Project:**
 1. Right-click **Libraries** in NetBeans.
 2. Click **Add JAR/Folder**.
 3. Select the downloaded JAR files and click **OK**.
+<br/>
 
----
-
-### **3️⃣ Configure `web.xml` (Database Credentials)**
+## **3️⃣ Configure `web.xml` (Database Credentials)**
 📌 **Update `web.xml` with your database credentials:**
 ```xml
 <context-param>
@@ -97,10 +99,9 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
     <param-value>YOUR_DB_PASSWORD</param-value>
 </context-param>
 ```
+<br/>
 
----
-
-### **4️⃣ Set Up & Run the Database**
+## **4️⃣ Set Up & Run the Database**
 📌 **Execute `DatabaseSetupServlet` to create tables & insert default data:**
 1. **Start Tomcat Server** in NetBeans.
 2. Open in browser:
@@ -108,30 +109,24 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
    http://localhost:8080/AchievoHub/DatabaseSetupServlet
    ```
 3. Wait for the success message: ✅ _"Database setup completed successfully!"_
+<br/>
 
----
-
-## 🔁 **Project Flow**
+# 🔁 **Project Flow**
 1️⃣ **Register** → Redirects to **Login**.  
 2️⃣ **Login** → Redirects to **Profile Page** (User can update/delete profile).  
 3️⃣ **Achievements Page** → View all achievements (own + others').  
 4️⃣ **Add Achievements** → Users can add their achievements.  
 5️⃣ **Update Achievements** → Modify previously added achievements.  
 6️⃣ **Logout** → Ends session, redirects to login page.  
+<br/>
 
----
-
-## 🤝 **Contributors**
-👨‍💻 **Pratham Rathod** - [GitHub Profile](https://github.com/your-username)
-
----
-
-## 🏆 **Final Thoughts**
+# 🏆 **Final Thoughts**
 AchievoHub is a **powerful and user-friendly achievement management system** that helps users **track their accomplishments and showcase their skills**. 🚀
 
 Contributions, feedback, and feature requests are welcome! 😊
 
 📌 **Future Enhancements (Planned)**
+
 ✅ Email verification using JavaMail API.  
 ✅ Password recovery feature.  
 ✅ REST API for external integrations.  
