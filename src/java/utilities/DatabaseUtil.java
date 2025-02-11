@@ -30,19 +30,24 @@ public class DatabaseUtil {
 
     // The method creates user by adding their data to database.
     public String registerUser(User user) {
-        String query = "INSERT INTO users(id, username, fname, lname, contact, email, password) VALUES(users_seq.NEXTVAL, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setString(1, user.getUsername());
-            stmt.setString(2, user.getFname());
-            stmt.setString(3, user.getLname());
-            stmt.setString(4, user.getContact());
-            stmt.setString(5, user.getEmail());
-            stmt.setString(6, user.getPassword());
-            int result = stmt.executeUpdate();
-            return result > 0 ? "success" : "fail";
+        String query = "INSERT INTO USERS (ID, USERNAME, FNAME, LNAME, CONTACT, EMAIL, PASSWORD) "
+                + "VALUES (USERS_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+
+        try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getFname());
+            pstmt.setString(3, user.getLname());
+            pstmt.setString(4, user.getContact());
+            pstmt.setString(5, user.getEmail());
+            pstmt.setString(6, user.getPassword());
+
+            int rowsInserted = pstmt.executeUpdate();
+            return (rowsInserted > 0) ? "success" : "fail";
+
         } catch (SQLException e) {
-            System.out.println("Exception In registerUser: " + e.toString());
-            return e.toString();
+            System.out.println("Exception in registerUser: " + e.toString());
+            return "error";
         }
     }
 

@@ -101,12 +101,7 @@ public class Controller extends HttpServlet {
 
         // Registers the user.
         if (submit.equals("register")) {
-            request.getRequestDispatcher("UserRegisteration").include(request, response);
-            if (request.getAttribute("message").equals("success")) {
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            } else {
-                request.getRequestDispatcher("register.jsp").forward(request, response);
-            }
+            request.getRequestDispatcher("UserRegisteration").forward(request, response);
         }
 
         // Log in the user.

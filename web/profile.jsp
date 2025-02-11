@@ -32,7 +32,7 @@
                     <form action="Controller" method="post">
                         <div class="row">
                             <div class="col-lg-3 col-md-4 text-center" style="padding-top: 17px">
-                                <img id="imgPhoto" class="profile-img img-fluid" src="<%=user.getPicture()%>" alt="Profile Picture">
+                                <img id="imgPhoto" class="profile-img img-fluid" src="<%=user.getPicture() == null ? "resources/images/profile.jpg" : user.getPicture()%>" alt="Profile Picture">
                             </div>
                             <div class="col-lg-9 col-md-8">
                                 <div class="row">

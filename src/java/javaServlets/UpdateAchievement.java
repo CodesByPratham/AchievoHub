@@ -1,4 +1,4 @@
-    package javaServlets;
+package javaServlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -31,7 +31,7 @@ public class UpdateAchievement extends HttpServlet {
         if (filePart != null && filePart.getSize() > 0) {
             // Extract original file name
             String originalFileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            
+
             // Generate a unique file name using UUID + timestamp
             String extension = originalFileName.contains(".") ? originalFileName.substring(originalFileName.lastIndexOf(".")) : "";
             String uniqueFileName = UUID.randomUUID().toString() + "_" + new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date()) + extension;

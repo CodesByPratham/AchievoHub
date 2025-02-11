@@ -53,7 +53,7 @@
                         <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch">
                             <div class="card mb-4 shadow-sm h-auto" style="width: inherit">
                                 <div class="card-header d-flex align-items-center">
-                                    <img src="<%=user.getPicture()%>" alt="Profile Picture" class="rounded-circle me-2" width="50" height="50">
+                                    <img src="<%=user.getPicture() == null ? "resources/images/profile.jpg" : user.getPicture()%>" alt="Profile Picture" class="rounded-circle me-2" width="50" height="50">
                                     <h6 class="ml-4"><%= user.getFname() + " " + user.getLname()%></h6>
                                 </div>
                                 <div class="card-body text-center">

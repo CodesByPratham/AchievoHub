@@ -19,3 +19,4 @@
 
 # Ignore NetBeans-generated files
 nbproject/private/
+/dist/

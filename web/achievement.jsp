@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div class="d-flex">
-                        <img src="<%=user.getPicture()%>" alt="Profile Picture" class="rounded-circle pp" width="50" height="50">&nbsp;&nbsp;
+                        <img src="<%=user.getPicture() == null ? "resources/images/profile.jpg" : user.getPicture()%>" alt="Profile Picture" class="rounded-circle pp" width="50" height="50">&nbsp;&nbsp;
                         <h4 class="mt-2"><%=(user.getFname() + " " + user.getLname())%></h4>
                     </div>
                     <a href="Controller?message=profile&id=<%=user.getId()%>" class="btn btn-primary btn-sm">

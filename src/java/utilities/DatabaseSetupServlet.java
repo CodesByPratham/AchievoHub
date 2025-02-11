@@ -47,8 +47,10 @@ public class DatabaseSetupServlet extends HttpServlet {
                     CITY NUMBER DEFAULT 1,
                     STATE NUMBER DEFAULT 1,
                     PINCODE VARCHAR2(8),
+                    VERIFIED BOOLEAN DEFAULT FALSE,
+                    VERIFICATION_CODE VARCHAR2(255),
                     PASSWORD VARCHAR2(100) NOT NULL,
-                    PICTURE VARCHAR2(100) DEFAULT 'resources/images/profile.jpg'
+                    PICTURE VARCHAR2(100) DEFAULT NULL
                 )
             """);
 

@@ -17,7 +17,7 @@
                     <div class="text-white mb-3 mb-md-0">
                         <%if (request.getAttribute("message") != null) {
                                 String message = (String) request.getAttribute("message");
-                                out.println("<p class='color-white m-0'>Registeration Failed: " + message + "</p>");
+                                out.println("<p class='color-white m-0'>" + message + "</p>");
                             }%>
                     </div>
                 </div>

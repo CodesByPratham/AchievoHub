@@ -30,6 +30,10 @@ public class AppConfigListener implements ServletContextListener {
         context = null;
     }
 
+    public static ServletContext getServletContext() {
+        return context;
+    }
+
     public static String getDBDriver() {
         return context.getInitParameter("dbDriver");
     }

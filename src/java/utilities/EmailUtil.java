@@ -1,0 +1,47 @@
+package utilities;
+
+import java.util.Properties;
+import jakarta.mail.Message;
+import jakarta.mail.MessagingException;
+import jakarta.mail.PasswordAuthentication;
+import jakarta.mail.Session;
+import jakarta.mail.Transport;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.servlet.ServletContext;
+
+public class EmailUtil {
+
+    public static void sendVerificationEmail(String recipientEmail, String verificationLink) {
+        ServletContext context = AppConfigListener.getServletContext();
+        String host = context.getInitParameter("mailHost");
+        String port = context.getInitParameter("mailPort");
+        final String user = context.getInitParameter("mailUser");
+        final String pass = context.getInitParameter("mailPassword");
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(props, new jakarta.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, pass);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+            message.setSubject("AchievoHub - Email Verification");
+            message.setText("Click the link below to verify your email:\n" + verificationLink);
+
+            Transport.send(message);
+            System.out.println("Verification email sent successfully!");
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -3,21 +3,47 @@
     <!-- Start: Database Credentials -->
     <context-param>
         <param-name>dbDriver</param-name>
-        <param-value><!-- Add your database driver like "oracle.jdbc.driver.OracleDriver" --></param-value>
+        <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+        <!-- Add your database driver like "oracle.jdbc.driver.OracleDriver" -->
     </context-param>
     <context-param>
         <param-name>dbURL</param-name>
-        <param-value><!-- Add your database url like "jdbc:oracle:thin:@localhost:1521:xe" --></param-value>
+        <param-value>jdbc:oracle:thin:@//localhost:1521/FREEPDB1</param-value>
+        <!-- Add your database url like "jdbc:oracle:thin:@localhost:1521:xe" -->
     </context-param>
     <context-param>
         <param-name>dbUser</param-name>
-        <param-value><!-- Add your database username like "SYS" --></param-value>
+        <param-value>PRATHAM_DBA</param-value>
+        <!-- Add your database username like "SYS" -->
     </context-param>
     <context-param>
         <param-name>dbPassword</param-name>
-        <param-value><!-- Add your database password like "ADMIN123" --></param-value>
+        <param-value>pratham</param-value>
+        <!-- Add your database password like "ADMIN123" -->
     </context-param>
     <!-- End: Database Credentials -->
+    <!-- Start: SMTP Credentials -->
+    <context-param>
+        <param-name>mailHost</param-name>
+        <param-value>smtp.gmail.com</param-value>
+        <!-- Add your SMTP mail host like "smtp.gmail.com" -->
+    </context-param>
+    <context-param>
+        <param-name>mailPort</param-name>
+        <param-value>587</param-value>
+        <!-- Add your SMTP mail port like "587" -->
+    </context-param>
+    <context-param>
+        <param-name>mailUser</param-name>
+        <param-value>prathamrathod9601@gmail.com</param-value>
+        <!-- Add your SMTP mail user like "example123@gmail.com" -->
+    </context-param>
+    <context-param>
+        <param-name>mailPassword</param-name>
+        <param-value>noaw qvsv hgnp tjhq</param-value>
+        <!-- Add your SMTP mail password like "abcd efgh ijkl mnop" -->
+    </context-param>
+    <!-- Start: SMTP Credentials -->
     <filter>
         <filter-name>RegisterValidationFilter</filter-name>
         <filter-class>javaFilters.RegisterValidationFilter</filter-class>
@@ -118,6 +144,10 @@
         <servlet-name>CheckEmail</servlet-name>
         <servlet-class>javaServlets.CheckEmail</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerifyEmailServlet</servlet-name>
+        <servlet-class>javaServlets.VerifyEmailServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
         <url-pattern>/Controller</url-pattern>
@@ -173,5 +203,9 @@
     <servlet-mapping>
         <servlet-name>CheckEmail</servlet-name>
         <url-pattern>/CheckEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyEmailServlet</servlet-name>
+        <url-pattern>/VerifyEmailServlet</url-pattern>
     </servlet-mapping>
 </web-app>

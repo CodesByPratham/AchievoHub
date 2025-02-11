@@ -23,6 +23,8 @@ public class User {
     private String picture;
     private String cityName;
     private String stateName;
+    private boolean verified;
+    private String verificationCode;
 
     public int getId() {
         return id;
@@ -152,21 +154,19 @@ public class User {
         this.picture = picture;
     }
 
-    @Override
-    public String toString() {
-        return "User{"
-                + "id=" + id
-                + ", username='" + username + '\''
-                + ", fname='" + fname + '\''
-                + ", lname='" + lname + '\''
-                + ", contact='" + contact + '\''
-                + ", email='" + email + '\''
-                + ", dob=" + dob
-                + ", gender='" + gender + '\''
-                + ", address='" + address + '\''
-                + ", city='" + city + '\''
-                + ", state='" + state + '\''
-                + ", pincode='" + pincode + '\''
-                + '}';
+    public boolean isVerified() {
+        return verified;
+    }
+
+    public void setVerified(boolean verified) {
+        this.verified = verified;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 }

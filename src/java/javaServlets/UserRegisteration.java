@@ -5,9 +5,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import utilities.DatabaseUtil;
+import java.util.UUID;
 import operations.User;
 import utilities.PasswordUtil;
+import utilities.EmailUtil;
 
 /**
  * @author PRATHAM
@@ -19,7 +20,7 @@ public class UserRegisteration extends HttpServlet {
 
         User user = new User();
 
-        // Creates the hash(using bcrypt) for the password provided by the user.
+        // Hash the password using bcrypt
         String hashedPassword = PasswordUtil.hashPassword(request.getParameter("password"));
 
         user.setUsername(request.getParameter("username"));
@@ -29,9 +30,18 @@ public class UserRegisteration extends HttpServlet {
         user.setEmail(request.getParameter("email"));
         user.setPassword(hashedPassword);
 
-        DatabaseUtil dbUtil = new DatabaseUtil();
-        String result = dbUtil.registerUser(user);
+        // Generate a unique verification code
+        String verificationCode = UUID.randomUUID().toString();
+        user.setVerificationCode(verificationCode);
 
-        request.setAttribute("message", result);
+        // Store user details temporarily in session
+        request.getSession().setAttribute("tempUser", user);
+
+        // Send verification email
+        String verificationLink = "http://localhost:8081/AchievoHub/VerifyEmailServlet?code=" + verificationCode;
+        EmailUtil.sendVerificationEmail(user.getEmail(), verificationLink);
+
+        request.setAttribute("message", "A verification email has been sent. Please verify your email to complete registration.");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }
