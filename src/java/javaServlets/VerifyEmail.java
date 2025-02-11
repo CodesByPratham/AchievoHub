@@ -11,7 +11,7 @@ import operations.User;
 /**
  * @author PRATHAM
  */
-public class VerifyEmailServlet extends HttpServlet {
+public class VerifyEmail extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

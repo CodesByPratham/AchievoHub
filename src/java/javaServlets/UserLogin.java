@@ -22,6 +22,6 @@ public class UserLogin extends HttpServlet {
             request.getSession().setAttribute("id", result[2]);
         }
 
-        request.setAttribute("message", result[0]);
+        request.setAttribute("message", result[0]); // Pass correct message to the frontend
     }
 }

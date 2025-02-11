@@ -38,10 +38,9 @@ public class UserRegisteration extends HttpServlet {
         request.getSession().setAttribute("tempUser", user);
 
         // Send verification email
-        String verificationLink = "http://localhost:8081/AchievoHub/VerifyEmailServlet?code=" + verificationCode;
+        String verificationLink = "http://localhost:8081/AchievoHub/VerifyEmail?code=" + verificationCode;
         EmailUtil.sendVerificationEmail(user.getEmail(), verificationLink);
 
         request.setAttribute("message", "A verification email has been sent. Please verify your email to complete registration.");
-        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

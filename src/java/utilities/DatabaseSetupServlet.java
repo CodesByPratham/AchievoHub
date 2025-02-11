@@ -49,6 +49,7 @@ public class DatabaseSetupServlet extends HttpServlet {
                     PINCODE VARCHAR2(8),
                     VERIFIED BOOLEAN DEFAULT FALSE,
                     VERIFICATION_CODE VARCHAR2(255),
+                    RESET_TOKEN VARCHAR2(255),
                     PASSWORD VARCHAR2(100) NOT NULL,
                     PICTURE VARCHAR2(100) DEFAULT NULL
                 )

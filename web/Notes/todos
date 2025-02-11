@@ -1,2 +1,1 @@
 1. Add try catch at all the places.
-2. Add all the images to the resources folder and modify the DatabaseSetupServlet to add the images.

@@ -101,17 +101,32 @@ public class Controller extends HttpServlet {
 
         // Registers the user.
         if (submit.equals("register")) {
-            request.getRequestDispatcher("UserRegisteration").forward(request, response);
+            request.getRequestDispatcher("UserRegisteration").include(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
         }
 
         // Log in the user.
         if (submit.equals("login")) {
             request.getRequestDispatcher("UserLogin").include(request, response);
-            if (request.getAttribute("message").equals("success")) {
+            String message = (String) request.getAttribute("message");
+            if ("success".equals(message)) {
                 response.sendRedirect("Controller?message=profile");
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+        }
+
+        // Forget password
+        if (submit.equals("forgotPassword")) {
+            request.getRequestDispatcher("ForgotPassword").include(request, response);
+            request.getRequestDispatcher("forgotPassword.jsp").forward(request, response);
+        }
+
+        // Resets the password
+        if (submit.equals("resetPassword")) {
+            request.getRequestDispatcher("ResetPassword").include(request, response);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
 
         // Updates the user data.

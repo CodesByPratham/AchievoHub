@@ -12,7 +12,20 @@ import jakarta.servlet.ServletContext;
 
 public class EmailUtil {
 
+    // Sends verification email after user registration
     public static void sendVerificationEmail(String recipientEmail, String verificationLink) {
+        sendEmail(recipientEmail, "AchievoHub - Email Verification",
+                "Click the link below to verify your email:\n" + verificationLink);
+    }
+
+    // Sends reset password email
+    public static void sendResetPasswordEmail(String recipientEmail, String resetLink) {
+        sendEmail(recipientEmail, "AchievoHub - Reset Password",
+                "Click the link below to reset your password:\n" + resetLink);
+    }
+
+    // Generic method to send emails
+    private static void sendEmail(String recipientEmail, String subject, String content) {
         ServletContext context = AppConfigListener.getServletContext();
         String host = context.getInitParameter("mailHost");
         String port = context.getInitParameter("mailPort");
@@ -35,11 +48,11 @@ public class EmailUtil {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
-            message.setSubject("AchievoHub - Email Verification");
-            message.setText("Click the link below to verify your email:\n" + verificationLink);
+            message.setSubject(subject);
+            message.setText(content);
 
             Transport.send(message);
-            System.out.println("Verification email sent successfully!");
+            System.out.println(subject + " email sent successfully!");
         } catch (MessagingException e) {
             e.printStackTrace();
         }

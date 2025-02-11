@@ -65,7 +65,7 @@ public class DatabaseUtil {
         return false;
     }
 
-// Checks if the email already exists.
+    // Checks if the email already exists.
     public boolean doesEmailExists(String email) {
         String query = "SELECT 1 FROM USERS WHERE EMAIL = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -82,26 +82,75 @@ public class DatabaseUtil {
     // The method verifies the user's credentials as they log in.
     public String[] loginUser(String identifier, String password) {
         String query = "SELECT id, username, password FROM users WHERE username = ? OR email = ?";
+
         try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, identifier);
             stmt.setString(2, identifier);
+
             try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    String username = rs.getString("username");
-                    String id = rs.getString("id");
-                    String hashedPassword = rs.getString("password");
-                    if (PasswordUtil.checkPassword(password, hashedPassword)) {
-                        return new String[]{"success", username, id};
-                    }
+                if (!rs.next()) {
+                    return new String[]{"no_user"}; // No such user exists
+                }
+
+                String username = rs.getString("username");
+                String id = rs.getString("id");
+                String hashedPassword = rs.getString("password");
+
+                if (PasswordUtil.checkPassword(password, hashedPassword)) {
+                    return new String[]{"success", username, id}; // Correct credentials
+                } else {
+                    return new String[]{"wrong_password"}; // Incorrect password
                 }
             }
-            return new String[]{"fail"};
         } catch (SQLException e) {
             System.out.println("Exception In loginUser: " + e.toString());
             return new String[]{e.toString()};
         }
     }
 
+    // Get user's email from username or email input
+    public String getEmailByIdentifier(String identifier) {
+        String query = "SELECT email FROM users WHERE username = ? OR email = ?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, identifier);
+            stmt.setString(2, identifier);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("email");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Exception in getEmailByIdentifier: " + e.toString());
+        }
+        return null;
+    }
+
+    // Store reset token in the database
+    public void storeResetToken(String email, String token) {
+        String query = "UPDATE users SET reset_token = ? WHERE email = ?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, token);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Exception in storeResetToken: " + e.toString());
+        }
+    }
+
+    // Verify reset token and update password
+    public boolean resetPassword(String token, String newPassword) {
+        String query = "UPDATE users SET password = ?, reset_token = NULL WHERE reset_token = ?";
+        try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, token);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Exception in resetPassword: " + e.toString());
+        }
+        return false;
+    }
+
+    // The method deletes the user's profile.
     public String deleteUser(int userId) {
         try (Connection conn = getConnection()) {
             String deleteAchievementsQuery = "DELETE FROM achievement WHERE user_id = ?";

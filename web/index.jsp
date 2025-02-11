@@ -19,12 +19,14 @@
                                 String message = (String) request.getAttribute("message");
                                 if (message.equals("success")) {
                                     out.println("<p class='color-white m-0'>Registration successful! Please log in.</p>");
-                                } else if (message.equals("fail")) {
-                                    out.println("<p class='color-white m-0'>Invalid email or password. Please try again.</p>");
                                 } else if (message.equals("logout")) {
-                                    out.println("<p class='color-white m-0'>Logout Successfull.</p>");
+                                    out.println("<p class='color-white m-0'>Logout Successful.</p>");
                                 } else if (message.equals("urlMessing")) {
                                     out.println("<p class='color-white m-0'>Hey! Don't mess with the URL.</p>");
+                                } else if (message.equals("no_user")) {
+                                    out.println("<p class='color-white m-0'>There is no such user. Please register.</p>");
+                                } else if (message.equals("wrong_password")) {
+                                    out.println("<p class='color-white m-0'>Wrong password. Please try again.</p>");
                                 } else {
                                     out.println("<p class='color-white m-0'>" + message + "</p>");
                                 }
@@ -50,7 +52,12 @@
                         </div>
                         <div class="text-center text-md-end mt-4">
                             <button type="submit" class="btn btn-primary btn-md btn-block" name="submit" value="login" >Login</button>
-                            <p class="medium fw-bold mt-2 pt-1 mb-0">New here? <a href="register.jsp" class="link-danger">Register</a></p>
+                            <div class="d-flex justify-content-between">
+                                <p class="medium fw-bold mt-2 pt-1 mb-0">New here? <a href="register.jsp" class="link-danger">Register</a></p>
+                                <p class="medium fw-bold mt-2 pt-1 mb-0">
+                                    <a href="forgotPassword.jsp" class="link-danger">Forgot Password?</a>
+                                </p>
+                            </div>
                         </div>
                     </form>
                 </div>

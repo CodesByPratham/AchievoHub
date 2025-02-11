@@ -35,7 +35,7 @@
         <param-name>mailPassword</param-name>
         <param-value><!-- Add your SMTP mail password like "abcd efgh ijkl mnop" --></param-value>
     </context-param>
-    <!-- Start: SMTP Credentials -->
+    <!-- Start: SMTP Credentials -->    
     <filter>
         <filter-name>RegisterValidationFilter</filter-name>
         <filter-class>javaFilters.RegisterValidationFilter</filter-class>
@@ -137,8 +137,16 @@
         <servlet-class>javaServlets.CheckEmail</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>VerifyEmailServlet</servlet-name>
-        <servlet-class>javaServlets.VerifyEmailServlet</servlet-class>
+        <servlet-name>ForgotPassword</servlet-name>
+        <servlet-class>javaServlets.ForgotPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ResetPassword</servlet-name>
+        <servlet-class>javaServlets.ResetPassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VerifyEmail</servlet-name>
+        <servlet-class>javaServlets.VerifyEmail</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
@@ -197,7 +205,15 @@
         <url-pattern>/CheckEmail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>VerifyEmailServlet</servlet-name>
-        <url-pattern>/VerifyEmailServlet</url-pattern>
+        <servlet-name>ForgotPassword</servlet-name>
+        <url-pattern>/ForgotPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResetPassword</servlet-name>
+        <url-pattern>/ResetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyEmail</servlet-name>
+        <url-pattern>/VerifyEmail</url-pattern>
     </servlet-mapping>
 </web-app>
