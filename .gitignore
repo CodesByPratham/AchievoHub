@@ -1,0 +1,22 @@
+# Ignore NetBeans build directories
+/build/
+/nbproject/private/
+**/nbproject/private/
+
+# Ignore compiled class files
+*.class
+*.jar
+*.war
+
+# Ignore IDE settings
+.idea/
+.vscode/
+.settings/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+# Ignore NetBeans-generated files
+nbproject/private/
+/dist/
