@@ -50,6 +50,7 @@ public class EmailUtil {
         });
 
         try {
+            
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
@@ -58,6 +59,7 @@ public class EmailUtil {
 
             Transport.send(message);
             System.out.println(subject + " email sent successfully!");
+        
         } catch (MessagingException e) {
             e.printStackTrace();
         }

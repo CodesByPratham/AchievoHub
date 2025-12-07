@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const navbar = document.querySelector(".navbar");
 
     if (!navbar) {
-        console.error("Navbar element not found! Check if the navbar exists in the DOM.");
         return;
     }
 

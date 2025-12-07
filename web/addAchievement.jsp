@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="errorPage.jsp"%>
-<%@page import="java.util.*, operations.Achievement, operations.User" %>
+<%@page import="java.util.*, model.Achievement, model.User" %>
 <%@page session="true" %>
 <%
     if (session == null || session.getAttribute("username") == null) {

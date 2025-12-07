@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 import utilities.DatabaseUtil;
-import operations.User;
+import model.User;
 
 /**
  * @author PRATHAM

@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <%@include file="includes/head.jsp"%>
-    <body class="no-scroll">
+    <body class="">
         <nav class="bg-primary">
             <div class="container">
                 <div class="py-2 px-2 px-xl-5 bg-primary">

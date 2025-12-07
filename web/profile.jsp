@@ -6,17 +6,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="errorPage.jsp"%>
-<%@page import="operations.User"%>
+<%@page import="model.User"%>
 
 <%
     User user = (User) request.getAttribute("user");
 
-    if (session == null || session.getAttribute("username") == null || user == null) {
-        request.setAttribute("message", "urlMessing");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
-        return;
-    }
+//    if (session == null || session.getAttribute("username") == null || user == null) {
+//        request.setAttribute("message", "urlMessing");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+//        dispatcher.forward(request, response);
+//        return;
+//    }
 
     request.setAttribute("pageTitle", "User Profile");
 %>

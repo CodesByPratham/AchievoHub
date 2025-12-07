@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 import utilities.DatabaseUtil;
-import operations.State;
+import model.State;
 
 /**
  * @author PRATHAM

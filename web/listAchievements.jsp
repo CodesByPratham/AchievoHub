@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="errorPage.jsp"%>
-<%@page import="java.util.List, operations.Achievement, operations.User"%>
+<%@page import="java.util.List, model.Achievement, model.User"%>
 
 <%
     if (session == null || session.getAttribute("username") == null) {
@@ -55,7 +55,7 @@
                     <% } else { %>
                     <div class="row">
                         <% for (Achievement achievement : achievements) {
-                                    User user = achievement.getUser();%>
+                                User user = achievement.getUser();%>
                         <div class="col-lg-4 col-md-6 col-12 d-flex align-items-stretch">
                             <div class="card mb-4 shadow-sm h-auto" style="width: inherit">
                                 <div class="card-header d-flex align-items-center">

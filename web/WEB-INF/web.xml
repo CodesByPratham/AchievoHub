@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.1" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_1.xsd">
-        <!-- Start: Database Credentials -->
+    <!-- Start: Database Credentials -->
     <context-param>
         <param-name>dbDriver</param-name>
-        <param-value><!-- Add your database driver like "oracle.jdbc.driver.OracleDriver" --></param-value>
+        <param-value><!-- Add your database driver like "org.postgresql.Driver" --></param-value>
     </context-param>
     <context-param>
         <param-name>dbURL</param-name>
-        <param-value><!-- Add your database url like "jdbc:oracle:thin:@localhost:1521:xe" --></param-value>
+        <param-value><!-- Add your database url like "jdbc:postgresql://localhost:5432/achievohub" --></param-value>
     </context-param>
     <context-param>
         <param-name>dbUser</param-name>

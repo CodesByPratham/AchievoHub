@@ -8,8 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import operations.Achievement;
-import operations.User;
+import model.Achievement;
+import model.User;
 
 /**
  * @author PRATHAM
@@ -137,7 +137,12 @@ public class Controller extends HttpServlet {
         // Process password change request
         if (submit.equals("changePassword")) {
             request.getRequestDispatcher("ChangePassword").include(request, response);
-            request.getRequestDispatcher("profile.jsp").forward(request, response);
+            String message = (String) request.getAttribute("message");
+            if ("success".equals(message)) {
+                response.sendRedirect("Controller?message=profile");
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
         }
 
         // Updates the user data.

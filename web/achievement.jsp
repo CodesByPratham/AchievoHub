@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="errorPage.jsp"%>
-<%@page import="operations.Achievement, operations.User"%>
+<%@page import="model.Achievement, model.User"%>
 <%
     Achievement achievement = (Achievement) request.getAttribute("achievement");
 

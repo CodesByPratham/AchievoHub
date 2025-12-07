@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import utilities.DatabaseUtil;
-import operations.User;
+import model.User;
 
 /**
  * @author PRATHAM

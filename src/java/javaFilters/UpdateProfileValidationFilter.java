@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 import utilities.DatabaseUtil;
-import operations.User;
+import model.User;
 
 /**
  * @author PRATHAM

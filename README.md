@@ -8,9 +8,9 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 
 - **Programming Language:** Java (JDK 11 or higher)
 - **Web Technologies:** JSP, Servlets, AJAX, jQuery
-- **Database:** Oracle Database (JDBC for connectivity)
+- **Database:** PostgreSQL Database (JDBC for connectivity)
 - **IDE:** NetBeans
-- **Server:** Tomcat 10 or higher
+- **Server:** Tomcat 11 or higher
 - **Security:** jBCrypt for password hashing
 - **Dependency Management:** Gson for JSON parsing
 - **Email Services:** Jakarta Mail (Now as Angus Mail) for **email verification, password change, and forgot password functionality**
@@ -63,8 +63,8 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 ## **1️⃣ Install Required Software**
 
 - **NetBeans IDE** (or any Java IDE)
-- **Tomcat 10 or higher**
-- **Oracle Database**
+- **Tomcat 11 or higher**
+- **PostgreSQL Database**
 - **JDK 11 or higher**
 
 ## **2️⃣ Add Required JAR Files**
@@ -76,21 +76,10 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 - **Jakarta Mail (Angus Mail Provider)**: [Download](https://repo1.maven.org/maven2/org/eclipse/angus/jakarta.mail/2.0.3/jakarta.mail-2.0.3.jar)
 - **Jakarta Activation API 2.1 Specification**: [Download](https://repo1.maven.org/maven2/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar)
 
-### 📌 **Choose the Correct JDBC Driver for Your Database:**
-
-| Database                         | JDK Version | JDBC Driver                     |
-| -------------------------------- | ----------- | ------------------------------- |
-| **Oracle 9i**                    | Any         | `classes12.jar`                 |
-| **Oracle 10g (JDK 1.4)**         | 1.4         | `ojdbc4.jar`                    |
-| **Oracle 11g (JDK 1.5/1.6)**     | 1.5/1.6     | `ojdbc5.jar` / `ojdbc6.jar`     |
-| **Oracle 12c/19c (JDK 1.7/1.8)** | 1.7/1.8     | `ojdbc7.jar` / `ojdbc8.jar`     |
-| **SQL Server (Various)**         | 1.4 - 1.8   | `sqljdbc.jar` / `sqljdbc42.jar` |
-| **IBM DB2**                      | Various     | `db2jcc.jar`, `jt400.jar`       |
-
 🔗 Refer to official sources for JDBC driver downloads:
 
-- [Oracle JDBC Drivers](https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)
-- [JDBC Driver Selection Guide](https://docs.oracle.com/en/applications/jd-edwards/cross-product/9.2/eoism/obtain-jdbc-drivers.html)
+- [PostgreSQL JDBC Drivers](https://mvnrepository.com/artifact/org.postgresql/postgresql)
+- [PostgreSQL](https://jdbc.postgresql.org/)
 
 ### 📌 **Add JARs to NetBeans Project:**
 
@@ -108,11 +97,11 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
 <!-- Start: Database Credentials -->
     <context-param>
         <param-name>dbDriver</param-name>
-        <param-value><!-- Add your database driver like "oracle.jdbc.driver.OracleDriver" --></param-value>
+        <param-value><!-- Add your database driver like "org.postgresql.Driver" --></param-value>
     </context-param>
     <context-param>
         <param-name>dbURL</param-name>
-        <param-value><!-- Add your database url like "jdbc:oracle:thin:@localhost:1521:xe" --></param-value>
+        <param-value><!-- Add your database url like "jdbc:postgresql://localhost:5432/achievohub" --></param-value>
     </context-param>
     <context-param>
         <param-name>dbUser</param-name>
@@ -122,8 +111,8 @@ AchievoHub is a **Java-based web application** that enables users to manage thei
         <param-name>dbPassword</param-name>
         <param-value><!-- Add your database password like "ADMIN123" --></param-value>
     </context-param>
-<!-- End: Database Credentials -->
-<!-- Start: SMTP Credentials -->
+    <!-- End: Database Credentials -->
+    <!-- Start: SMTP Credentials -->
     <context-param>
         <param-name>mailHost</param-name>
         <param-value><!-- Add your SMTP mail host like "smtp.gmail.com" --></param-value>

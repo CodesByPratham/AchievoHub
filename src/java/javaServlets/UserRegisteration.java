@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
-import operations.User;
+import model.User;
 import utilities.PasswordUtil;
 import utilities.EmailUtil;
 
@@ -38,7 +38,7 @@ public class UserRegisteration extends HttpServlet {
         request.getSession().setAttribute("tempUser", user);
 
         // Send verification email
-        String verificationLink = "http://localhost:8081/AchievoHub/VerifyEmail?code=" + verificationCode;
+        String verificationLink = "http://localhost:8080/AchievoHub/VerifyEmail?code=" + verificationCode;
         EmailUtil.sendVerificationEmail(user.getEmail(), verificationLink);
 
         request.setAttribute("message", "A verification email has been sent. Please verify your email to complete registration.");

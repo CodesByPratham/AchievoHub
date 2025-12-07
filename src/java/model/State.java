@@ -1,4 +1,4 @@
-package operations;
+package model;
 
 /**
  * @author PRATHAM

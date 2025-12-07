@@ -9,10 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import operations.Achievement;
-import operations.City;
-import operations.State;
-import operations.User;
+import model.Achievement;
+import model.City;
+import model.State;
+import model.User;
 
 /**
  * @author PRATHAM
@@ -30,8 +30,8 @@ public class DatabaseUtil {
 
     // The method creates user by adding their data to database.
     public String registerUser(User user) {
-        String query = "INSERT INTO USERS (ID, USERNAME, FNAME, LNAME, CONTACT, EMAIL, PASSWORD) "
-                + "VALUES (USERS_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO USERS (USERNAME, FNAME, LNAME, CONTACT, EMAIL, PASSWORD) "
+                + "VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
 
@@ -96,7 +96,7 @@ public class DatabaseUtil {
                 String id = rs.getString("id");
                 String hashedPassword = rs.getString("password");
 
-                if (PasswordUtil.checkPassword(password, hashedPassword)) {
+                if (PasswordUtil.checkPassword(password, hashedPassword)) {                    
                     return new String[]{"success", username, id}; // Correct credentials
                 } else {
                     return new String[]{"wrong_password"}; // Incorrect password
@@ -132,7 +132,7 @@ public class DatabaseUtil {
             stmt.setString(1, newPassword);
             stmt.setInt(2, userId);
             int updated = stmt.executeUpdate();
-            return updated > 0 ? "Password updated successfully!" : "Password update failed.";
+            return updated > 0 ? "success" : "fail";
         } catch (SQLException e) {
             System.out.println("Exception in updateUserPassword: " + e.toString());
             return "An error occurred while updating the password.";
@@ -292,7 +292,7 @@ public class DatabaseUtil {
 
     // The method adds the achievement in the database
     public String addAchievement(Achievement achievement) {
-        String query = "INSERT INTO achievement(achievement_id, user_id, title, organization, website, category, type, method, duration, description, date_achieved, image) VALUES(achievements_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO achievement(user_id, title, organization, website, category, type, method, duration, description, date_achieved, image) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setInt(1, achievement.getUserId());

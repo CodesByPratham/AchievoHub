@@ -17,7 +17,7 @@ import utilities.DatabaseUtil;
  */
 public class ChangePasswordValidationFilter implements Filter {
 
-    private final DatabaseUtil dbUtil = new DatabaseUtil(); // Database utility for user operations
+    private final DatabaseUtil dbUtil = new DatabaseUtil(); 
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)

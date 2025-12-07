@@ -11,7 +11,7 @@ import java.nio.file.Paths;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
-import operations.Achievement;
+import model.Achievement;
 import utilities.DatabaseUtil;
 
 /**
