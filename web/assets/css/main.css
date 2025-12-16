@@ -1,0 +1,150 @@
+/* Created on: 25-Nov-2024, 3:00:06 pm | Author: PRATHAM */
+
+.navbar {
+    transition: top 0.3s;
+    top: -70px; /* Initially hidden */
+    position: fixed; /* Ensures it stays fixed while scrolling */
+    width: 100%;
+    z-index: 1050; /* Ensures navbar is above other elements */
+}
+
+.container-fluid{
+    margin-top: 50px;
+}
+
+/* Allow scrolling by default */
+.no-scroll {
+    overflow: auto;
+}
+
+/* Disable scrolling only on larger screens (tablets & desktops) */
+@media (min-width: 768px) {
+    .no-scroll {
+        overflow: hidden;
+        height: 100vh; /* Prevent vertical scrolling */
+    }
+}
+
+.h-custom {
+    height: calc(100% - 88px);
+}
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.profile-img {
+    height: 210px;
+    width: 210px;
+    border: 1.6px solid #ddd;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* Achievement Image */
+.achievement-preview {
+    width: 100%;
+    height: 180px; /* Ensure uniform height */
+    object-fit: contain; /* Ensures the full image is visible without cropping */
+    /*background-color: #f8f9fa;  Adds a subtle background to maintain consistency */
+    padding: 10px 10px 20px 10px; /* Adds spacing around images */
+    border-radius: 6px;
+}
+
+#achivement-view {
+    width: auto;
+    height: 250px; /* Ensure uniform height */
+    object-fit: contain; /* Ensures the full image is visible without cropping */
+    /*background-color: #f8f9fa;  Adds a subtle background to maintain consistency */
+    margin: 10px 10px 20px 10px; /* Adds spacing around images */
+    border-radius: 6px;
+}
+
+/* Card Container */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    /*font-weight: bold;*/
+}
+
+#drop-area {
+    width: 500px;
+    height: 320px;
+    padding: 30px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#add-image-view {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 2px dashed #007bff;
+    background: #f7f8ff;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+#add-image-view img {
+    width: 100px;
+    margin-top: 25px;
+}
+
+#add-image-view span {
+    display: block;
+    font-size: 12px;
+    color: #007bff;
+    margin-top: 15px;
+}
+
+
+/* Text Truncation for Descriptions */
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Show only 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (max-width: 600px) {
+    .no-padding{
+        padding: 0;
+    }
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 992px) {
+    .col-lg-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
